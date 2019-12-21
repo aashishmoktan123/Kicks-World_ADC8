@@ -1,0 +1,16 @@
+DIP:
+A. High level modules should not depend upon low level modules. Both should depend upon abstractions.
+B. Abstractions should not depend upon details. Details should depend upon abstractions.
+
+Forces
+We wish to avoid designs which are:
+Rigid (Hard to change due to dependencies. Especially since dependencies are transitive.)
+Fragile (Changes cause unexpected bugs.)
+Immobile (Difficult to reuse due to implicit dependence on current application code.)
+Inversion
+"Structured" methods of the 1970's tended towards a "top-down decomposition", which encouraged high-level modules to depend on modules written at a lower level of abstraction. (More modern procedural approaches depend more on databases and less on functional decomposition at the large-scale level. Thus, they are often "flatter" now.) This principle stems from the realization that we must reverse the direction of these dependencies to avoid rigidity, fragility and immobility.
+
+Examples
+In RobertMartins article, he uses a simple copying program as an example. The program copies characters from the keyboard to a printer. Modifying the program to support arbitrary output devices is inelegant since the copy "routine" implicitly depends on the keyboard reading code. A better architecture would define interfaces for readers and writers, thus the program can be easily adapted to support reading and writing from additional code for new devices. (This example seems to explain some of the idioms present in the java.io package.)
+The ObserverPattern can be considered a two-layered architecture, where the model is the lower-level module and the higher level module is the observer.
+
